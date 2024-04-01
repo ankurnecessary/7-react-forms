@@ -1,6 +1,6 @@
 # 7-react-forms
-Learning react forms
 
+Learning react forms
 
 Working with:
 
@@ -13,7 +13,7 @@ Working with:
 7. useRef() also helps in retaining the parts of the code like a reference to setTimeout(), setInterval(), array, object etc.
 8. useRef() value doesn't change when component function renders again and again because of state function updates.
 9. Using useRef() to manipulate the DOM is discouraged.
-10. ```<dialog></dialog>``` is what we use very frequently with useRef() to open or close modals.
+10. `<dialog></dialog>` is what we use very frequently with useRef() to open or close modals.
 11. forwardRef()
 12. useImperativeHandle()
 13. createPortal()
@@ -33,7 +33,7 @@ Working with:
 27. In the dependency array of useEffect() and useCallback() function we put props, state variables or other functions that are dependent on the state variables like context values and other functions. You will not add the state updating function of useState() directly.
 28. useState()'s state updating function never gets recreated again in react. So, we need not pass it as a dependency in useCallback() or useEffect().
 29. We have to add **variables related to derived state** as dependencies in useCallback() and useEffect().
-30. ***We should avoid or at least minimize the usage of useEffect() in our application as a best practice.***
+30. **_We should avoid or at least minimize the usage of useEffect() in our application as a best practice._**
 31. If we have multiple components having **key** attribute with them and all of them belong to same entity then we should consider making a separate component for that entity and use **key** attribute over it.
 32. We as a developer cannot consume key prop. It is exclusively for the react.
 33. Why use PropTypes instead of TypeScript? Answer: type-checking props using TypeScript can only be effective when the prop's value is hardcoded. Even though you claim that the data from the API is a number, you won't get any errors when the data is a string. Since type-checking is done during runtime, PropTypes is a better tool for unknown data.
@@ -53,6 +53,8 @@ Working with:
     2. Only call hooks on top level i.e. directly inside a component function but not in any if block or function inside component function.
 46. [Why custom hook?](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39837042#content). Suppose we have created a component and it is being used in multiple places later on. The component needs some data to be passed in through one of it's props. We are fetching this data from different HTTP endpoints at all the places where we have used this component. That means there is some code pattern that is common among all the places where the component is used and re-used. To decrease the code repetition related to the common code pattern we use **custom hooks**.
 47. A custom hook's function name should start with the word 'use' like 'useFetch()' etc.
+48. Using useState() to handle the ```<form>```s is a bad idea because it will lead to lot of code.
+49. Using useRef() is also a bad idea to handle a ```<form>``` because resetting a ```<form>``` using useRef() is discouraged. Lot of code eventually.
 
 [Eslint configuration - Best linting configuration is to use "format on save" and don't use "formatting option of ES Lint"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8231814#questions/20789494)
 
@@ -72,6 +74,6 @@ const storedPlaces = storedIds.map((id) => {
 
 A way of shuffling the array elements.
 
-``` Javascript
+```Javascript
 shuffledAnswers.sort(() => Math.random() - 0.5);
 ```
