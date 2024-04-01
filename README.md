@@ -53,8 +53,11 @@ Working with:
     2. Only call hooks on top level i.e. directly inside a component function but not in any if block or function inside component function.
 46. [Why custom hook?](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/39837042#content). Suppose we have created a component and it is being used in multiple places later on. The component needs some data to be passed in through one of it's props. We are fetching this data from different HTTP endpoints at all the places where we have used this component. That means there is some code pattern that is common among all the places where the component is used and re-used. To decrease the code repetition related to the common code pattern we use **custom hooks**.
 47. A custom hook's function name should start with the word 'use' like 'useFetch()' etc.
-48. Using useState() to handle the ```<form>```s is a bad idea because it will lead to lot of code.
-49. Using useRef() is also a bad idea to handle a ```<form>``` because resetting a ```<form>``` using useRef() is discouraged. Lot of code eventually.
+48. Using `useState()` to handle the `<form>`s is a bad idea because it will lead to lot of code.
+49. Using `useRef()` is also a bad idea to handle a `<form>` because resetting a `<form>` using useRef() is discouraged. Lot of code eventually.
+50. We can also use the ``FormData()` browser API to handle the form.
+51. You can reset a `<form>` using `form.reset()` function over it.
+52. You can also reset the form using `<button type="reset" >Reset</button>`.
 
 [Eslint configuration - Best linting configuration is to use "format on save" and don't use "formatting option of ES Lint"](https://www.udemy.com/course/react-the-complete-guide-incl-redux/learn/lecture/8231814#questions/20789494)
 
@@ -76,4 +79,14 @@ A way of shuffling the array elements.
 
 ```Javascript
 shuffledAnswers.sort(() => Math.random() - 0.5);
+```
+
+A way of using FormData()
+
+```Javascript
+const fd = new FormData(<form>);
+const acquisitionChannel = fd.getAll('acquisition');
+const data = Object.fromEntries(fd.entries());
+data.acquisitionChannel = acquisitionChannel;
+console.log(data);
 ```
