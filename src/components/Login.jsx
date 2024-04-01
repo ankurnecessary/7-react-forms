@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 export default function Login() {
 
-  const [enteredValues, setEnteredValues] = useState({email: '', password: ''});
+  const email = useRef();
+  const password = useRef();
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(enteredValues);
+    const enteredEmail = email.current.value;
+    const enteredPassword = password.current.value;
+    console.log(enteredEmail, enteredPassword);
   }
-
-  function handleChange(field, value) {
-    setEnteredValues(prevValue => ({...prevValue, [field]: value}));
-  }
+  
   return (
     <form onSubmit={handleSubmit}>
       <h2>Login</h2>
@@ -22,10 +22,7 @@ export default function Login() {
             id="email"
             type="email"
             name="email"
-            value={enteredValues.email}
-            onChange={(event) => {
-              handleChange('email', event.target.value);
-            }}
+            ref={email}
           />
         </div>
 
@@ -35,10 +32,7 @@ export default function Login() {
             id="password"
             type="password"
             name="password"
-            value={enteredValues.password}
-            onChange={(event) => {
-              handleChange('password', event.target.value);
-            }}
+            ref={password}
           />
         </div>
       </div>
